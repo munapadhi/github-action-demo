@@ -1,0 +1,27 @@
+name: Exploreing Workflow Filters
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - '!src/ignore-this-folder/**'
+      - '!src/ignore-this-file.txt'
+  pull_request:
+    paths:
+      - 'src/**'
+      - '!src/ignore-this-folder/**'
+      - '!src/ignore-this-file.txt'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run a script
+        run: echo "This job runs only when files in the 'src' directory are changed, excluding 'ignore-this-folder' and 'ignore-this-file.txt'."
+      - name: Execute the event type
+        run: echo "Event type:" ${{ github.event_name }}
