@@ -32,13 +32,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyfiglet
       - name: Install Cowsay program
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y cowsay
-      - name: Execute Cowsay CMD
-        run: |
-          cowsay "This is a Cowsay message!"
-          cowsay -f tux "This is a Tux Cowsay message!" >> cowsay_output.txt
-      - name: Test Cowsay Output
-        run: |
-          cat cowsay_output.txt
+        run: ./ascii-script.sh
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y cowsay
+      # - name: Execute Cowsay CMD
+      #   run: |
+      #     cowsay "This is a Cowsay message!"
+      #     cowsay -f tux "This is a Tux Cowsay message!" >> cowsay_output.txt
+      # - name: Test Cowsay Output
+      #   run: |
+      #     cat cowsay_output.txt
