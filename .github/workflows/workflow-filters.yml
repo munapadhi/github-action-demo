@@ -4,6 +4,15 @@ on:
   push:
     branches:
       - main
+      - '!feature/**' # ignore pushing to any branch name starting with 'feature/'
+  pull_request:
+    types:
+      - opened
+      - reopened
+    #   - synchronize
+    paths-ignore:  # Uncomment to use paths-ignore instead of paths
+    #   - 'docs/**'
+      - 'README.md'
     # paths:
     #   - 'src/**'
     #   - '!src/ignore-this-folder/**'
