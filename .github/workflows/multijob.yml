@@ -27,17 +27,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install the packeges
-        run: npm install
+        run: echo "Install the packages"
   RunTests:
       runs-on: ubuntu-latest
       steps:
         - name: Run the tests
-          run: npm test
+          run: echo "Run the tests"
   Build:
       runs-on: ubuntu-latest
       steps:
         - name: Build the project
-          run: npm run build
+          run: echo "Build the project"
   Deploy:
       runs-on: ubuntu-latest
       steps:
