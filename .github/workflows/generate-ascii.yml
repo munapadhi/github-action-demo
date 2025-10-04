@@ -31,21 +31,14 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pyfiglet
-
-      - name: Generate ASCII Art
-        id: generate_ascii
+      - name: Install Cowsay program
         run: |
-          TEXT="${{ github.event.inputs.text }}"
-          FONT="${{ github.event.inputs.font }}"
-          ASCII_ART=$(python -c "import pyfiglet; print(pyfiglet.figlet_format('$TEXT', font='$FONT'))")
-          echo "$ASCII_ART"
-          echo "::set-output name=ascii_art::$ASCII_ART"
-
-      - name: Save ASCII Art to file
+          sudo apt-get update
+          sudo apt-get install -y cowsay
+      - name: Execute Cowsay CMD
         run: |
-          echo "${{ steps.generate_ascii.outputs.ascii_art }}" > ascii_art.txt
-
-      - name: Commit and push ASCII Art file
+          cowsay "This is a Cowsay message!"
+          cowsay -f tux "This is a Tux Cowsay message!" >> cowsay_output.txt
+      - name: Test Cowsay Output
         run: |
-          git config --global user.name 'Muna Padhi'
-          git config --global user.email 'munapadhyibm@gmail.com'
+          cat cowsay_output.txt
