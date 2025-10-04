@@ -1,0 +1,9 @@
+name: My first github action
+
+on: [push]
+jobs:
+  my-first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v5
